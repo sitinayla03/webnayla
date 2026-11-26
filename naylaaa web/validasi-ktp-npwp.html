@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h2, initial-scale=Form Vali">
+    <title>Document</title>
+    <link rel="stylesheet" href="validasi-ktp-npwp.css">
+</head>
+<body>
+    <center>
+    <h2>Form Validasi KTP & NPWP</h2>
+    <label> KTP (16 digit) </label><br> 
+    <input type="text" id="ktp" maxlength="16"><br>
+    <div id="ktpError" class="error"></div>
+
+    <label >NPWP (15 digit, format: 99.999.999.9-999.999)</label><br>
+    <input type="text" id="npwp"><br>
+    <div id="npwpError" class="error"></div>
+
+    <button onclick="validasi()">Validasi</button>
+    </center>
+
+    <script>
+        function validasi() {
+            const ktp = document.getElementById('ktp').value;
+            const npwp = document.getElementById('npwp').value;
+            const ktpError = document.getElementById('ktpError').value;
+            const npwpError = document.getElementById('npwpError').value;
+
+            //reset error
+            ktpError.textContent ='';
+            npwpError.textContent ='';
+
+            //validasi KTP
+            if (!/^\d{16}$/.test(ktp));{
+               ktpError.textContent = 'KTP harus 16 digit angka.';
+            }
+        
+
+        //validasi NPWP
+        constnpwpRegex = /^\d{2}\.\d{3}\.\d{3}\.\d{1}-\d{3}\.\d{3}$/;
+        if (!npwpRegex.test(npwp)) {
+            npwpError.textContent = 'format NPWP tidak valid.';
+        }
+
+        if(ktpError.textContent === ''&& npwpError.textContent==='') {
+            alert('semua data valid!');
+        }
+}
+    </script>
+</body>
+</html>

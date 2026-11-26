@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form-pendaftaran.css">
+</head>
+<body>
+    <center>
+    <h2> form pendaftaran</h2>
+    <label> nama lengkap :</label> <br>
+    <input type="text" id="nama"> <br>
+    <div id="namaError" class="error"></div>
+
+    <label> email :</label> <br>
+    <input type="email" id="email"> <br>
+    <div id="emailError" class="error"></div>
+
+    <label> password (min.6 karakter) :</label> <br>
+    <input type="password" id="password"> <br>
+    <div id="passError" class="error"></div>
+
+    <button onclick="validasiform()">Daftar</button>
+    </center>
+
+    <script>
+        function validasiform() {
+            const nama = document.getElementById('nama').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            const namaError = document.getElementById('namaError');
+            const emailError = document.getElementById('emailError');
+            const passError = document.getElementById('passError');
+
+            // reset error
+            namaError.textContent='';
+            emailError.textContent='';
+            passError.textContent='';
+
+            let valid=true;
+
+            if (nama.length < 3 ) {
+                namaError.textContent='nama minimal 3 karakter.';
+                valid=false;
+            }
+
+            if (!email.includes ('@') || !email.includes('.') ) {
+                emailError.textContent='format email tidak valid.';
+                valid=false;
+            }
+
+            if (password.length < 6 ) {
+                namaError.textContent='password minimal 6 karakter.';
+                valid=false;
+            } 
+
+            if (valid) {
+                alert('pendaftaran berhasil')
+            }
+        }
+    </script>
+</body>
+</html>
